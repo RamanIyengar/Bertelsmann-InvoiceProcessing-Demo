@@ -1,77 +1,56 @@
 import { useState } from 'react'
 
 const USE_CASES = [
-  { no: 1,  supplier: 'ARRI Rental Deutschland GmbH', invoiceId: 'ARRI-2026-148750',  amount: '€187,420.00', cat: 'PO',       div: 'Fremantle (RTL Group)',        theme: 'PO 3-way match · VAT §12 standard rate' },
-  { no: 2,  supplier: 'Sunset Post Production',        invoiceId: 'SPP-2026-0461',     amount: '€94,300.00',  cat: 'PO',       div: 'Fremantle (RTL Group)',        theme: 'Duplicate invoice detection' },
-  { no: 3,  supplier: 'Maersk Line',                   invoiceId: 'MAEU-2026-58900',   amount: '$12,480.00',  cat: 'PO',       div: 'Penguin Random House',         theme: 'Freight surcharge tolerance breach' },
-  { no: 4,  supplier: 'Deloitte Consulting GmbH',      invoiceId: 'DLT-2026-7741',     amount: '€142,000.00', cat: 'Non-PO',   div: 'Arvato Connect',               theme: 'GL coding recommendation + email request' },
-  { no: 5,  supplier: 'Lehmanns Media GmbH',           invoiceId: 'LM-2026-04781',     amount: '€28,560.00',  cat: 'Non-PO',   div: 'Bertelsmann Education',        theme: 'VAT reduced rate §12 (books) mismatch' },
-  { no: 6,  supplier: 'Jung von Matt AG',               invoiceId: 'JVM-2026-3047',     amount: '€215,750.00', cat: 'Non-PO',   div: 'Bertelsmann Marketing Services', theme: 'Non-PO GL coding · marketing spend' },
-  { no: 7,  supplier: 'RR Donnelley',                  invoiceId: 'RRD-2026-660219',   amount: '$31,600.00',  cat: 'Non-PO',   div: 'DK Publishing (PRH)',          theme: 'Framework surcharge pre-approval check' },
-  { no: 8,  supplier: 'Ingram Content Group',          invoiceId: 'ING-2026-541097',   amount: '$84,210.00',  cat: 'PO',       div: 'Penguin Random House',         theme: 'Straight-through auto-approval' },
-  { no: 9,  supplier: 'Kobalt Music Group',            invoiceId: 'KOB-RY-2026-0831',  amount: '£318,750.00', cat: 'Royalty',  div: 'BMG Rights Management',        theme: 'Royalty withholding tax §50a EStG' },
-  { no: 10, supplier: 'T-Systems International GmbH', invoiceId: 'TSI-2026-884412',   amount: '€410,200.00', cat: 'Non-PO',   div: 'Arvato Systems',               theme: 'Ambiguous GL — 3 competing codes' },
-  { no: 11, supplier: 'Pixomondo GmbH',               invoiceId: 'PXM-2026-1047',     amount: '€560,000.00', cat: 'Non-PO',   div: 'Fremantle (RTL Group)',        theme: 'WBS project cost split · VFX production' },
-  { no: 12, supplier: 'Bertelsmann Intercompany',     invoiceId: 'IC-2026-BTV-0341',  amount: '€3,240,000.00', cat: 'IC',    div: 'Bertelsmann TV Germany',       theme: 'Intercompany reconciliation · transfer pricing' },
-  { no: 13, supplier: 'The Wylie Agency LLC',         invoiceId: 'WYL-RY-2026-0312',  amount: '$84,375.00',  cat: 'Royalty',  div: 'Penguin Random House',         theme: 'Royalty dispute resolution · DRC clearance' },
-  { no: 14, supplier: 'Stellify Media Ltd',           invoiceId: 'STL-2026-0094',     amount: '€196,800.00', cat: 'PO',       div: 'Fremantle (RTL Group)',        theme: 'Cross-border VAT reverse charge §13b UStG' },
+  { no: 1,  label: 'Straight-Through PO Processing — ARRI Rental (Fremantle)',           ticket: 'AP-TKT-100248',    amount: '€148,750' },
+  { no: 2,  label: 'Missing Service Entry Sheet — Sunset Post Production (Fremantle)',    ticket: 'AP-TKT-100249',    amount: '€312,000' },
+  { no: 3,  label: 'Duplicate Invoice Detection — Maersk Line (PRH)',                     ticket: 'AP-TKT-100250',    amount: '€58,900'  },
+  { no: 4,  label: 'Ambiguous GL Coding — Internal Dual Approval — Deloitte (Arvato)',   ticket: 'AP-TKT-100251',    amount: '€42,840'  },
+  { no: 5,  label: 'VAT / Tax Code Mismatch — Lehmanns Media (Bertelsmann Education)',   ticket: 'AP-TKT-100252',    amount: '€59,500'  },
+  { no: 6,  label: 'Non-PO GL Coding — Creative Agency — Jung von Matt (RTL)',           ticket: 'AP-TKT-100253',    amount: '€18,400'  },
+  { no: 7,  label: 'GL Coding — WBS / Project Accounting — T-Systems (Arvato)',          ticket: 'AP-TKT-100254/58', amount: '€63,400 / €50,000' },
+  { no: 8,  label: 'Royalty Statement — Manual Confidence Review — Kobalt Music (BMG)',  ticket: 'AP-TKT-100256',    amount: '€48,250'  },
+  { no: 9,  label: 'Intercompany Mismatch — Fremantle UK / RTL Germany',                 ticket: 'AP-TKT-100259',    amount: '€214,000' },
+  { no: 10, label: 'Royalty Rate Contract Deviation — The Wylie Agency (PRH / BMG)',     ticket: 'AP-TKT-100260',    amount: '€32,400'  },
+  { no: 11, label: 'GenAI Contract Milestone Validation — Stellify Media (Fremantle)',   ticket: 'AP-TKT-100261',    amount: '€185,000' },
 ]
 
 function UseCasesModal({ onClose }: { onClose: () => void }) {
-  const catColor = (cat: string) => {
-    if (cat === 'PO')     return { bg: '#e7ecf5', fg: '#1a3a6b' }
-    if (cat === 'Non-PO') return { bg: '#fef3e2', fg: '#b06b00' }
-    if (cat === 'Royalty') return { bg: '#f0ecf8', fg: '#6b35a8' }
-    return { bg: '#e8f5ee', fg: '#1b823f' }
-  }
   return (
     <div
       onClick={onClose}
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.82)', zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.72)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
-      <div onClick={e => e.stopPropagation()} style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', width: '900px', maxWidth: '95vw', maxHeight: '90vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 80px rgba(0,0,0,0.5)' }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: '#fff', borderRadius: '10px', overflow: 'hidden', width: '820px', maxWidth: '95vw', maxHeight: '90vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 80px rgba(0,0,0,0.45)' }}>
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid #e4e6e7', background: '#1d2f36', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px 14px', borderBottom: '2px solid #1a3a6b', flexShrink: 0 }}>
           <div>
-            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#fff' }}>Bertelsmann Use Cases</div>
-            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '2px' }}>AI-Powered Invoice Processing · 14 Use Cases</div>
+            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '17px', fontWeight: 700, color: '#1d2f36' }}>Bertelsmann Invoice Processing — Use Cases</div>
+            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', color: '#89919a', marginTop: '3px' }}>AI-Powered AP Automation · Demo Scope · 11 Use Cases</div>
           </div>
-          <button onClick={onClose} style={{ width: '30px', height: '30px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.08)', fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.7)', fontWeight: 700 }}>×</button>
+          <button onClick={onClose} style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #d0d4d7', background: '#f6f7f7', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b767b', fontWeight: 700, lineHeight: 1 }}>×</button>
         </div>
-        {/* Table */}
-        <div style={{ overflowY: 'auto', flex: 1 }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: 'Lato, sans-serif' }}>
-            <thead>
-              <tr style={{ background: '#f6f7f7', position: 'sticky', top: 0 }}>
-                {['#', 'Supplier', 'Invoice No.', 'Amount', 'Type', 'Division / BU', 'AI Use Case'].map(h => (
-                  <th key={h} style={{ padding: '10px 12px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '2px solid #e4e6e7', whiteSpace: 'nowrap' }}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {USE_CASES.map((uc, i) => {
-                const c = catColor(uc.cat)
-                return (
-                  <tr key={uc.no} style={{ background: i % 2 === 0 ? '#fff' : '#fafafa', borderBottom: '1px solid #f0f1f1' }}>
-                    <td style={{ padding: '10px 12px', fontSize: '12px', color: '#6b767b', fontWeight: 700, width: '30px' }}>{uc.no}</td>
-                    <td style={{ padding: '10px 12px', fontSize: '13px', fontWeight: 600, color: '#1d2f36', maxWidth: '180px' }}>{uc.supplier}</td>
-                    <td style={{ padding: '10px 12px', fontSize: '12px', color: '#6b767b', fontFamily: 'monospace', whiteSpace: 'nowrap' }}>{uc.invoiceId}</td>
-                    <td style={{ padding: '10px 12px', fontSize: '13px', fontWeight: 700, color: '#1d2f36', textAlign: 'right', whiteSpace: 'nowrap' }}>{uc.amount}</td>
-                    <td style={{ padding: '10px 12px' }}>
-                      <span style={{ fontSize: '11px', fontWeight: 700, background: c.bg, color: c.fg, borderRadius: '10px', padding: '2px 8px', whiteSpace: 'nowrap' }}>{uc.cat}</span>
-                    </td>
-                    <td style={{ padding: '10px 12px', fontSize: '12px', color: '#4a555c', maxWidth: '160px' }}>{uc.div}</td>
-                    <td style={{ padding: '10px 12px', fontSize: '12px', color: '#4a555c' }}>{uc.theme}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+        {/* List */}
+        <div style={{ overflowY: 'auto', flex: 1, padding: '8px 0' }}>
+          {USE_CASES.map((uc) => (
+            <div
+              key={uc.no}
+              style={{ display: 'flex', alignItems: 'center', padding: '13px 24px', borderBottom: '1px dashed #e0e3e6' }}
+            >
+              {/* Number */}
+              <div style={{ width: '28px', flexShrink: 0, fontFamily: 'Cabin, sans-serif', fontSize: '14px', fontWeight: 700, color: '#1a3a6b' }}>{uc.no}</div>
+              {/* Label */}
+              <div style={{ flex: 1, fontFamily: 'Lato, sans-serif', fontSize: '14px', color: '#1d2f36', fontWeight: 500, paddingRight: '16px' }}>{uc.label}</div>
+              {/* Ticket */}
+              <div style={{ flexShrink: 0, fontFamily: 'Lato, sans-serif', fontSize: '12px', color: '#89919a', marginRight: '24px', whiteSpace: 'nowrap' }}>{uc.ticket}</div>
+              {/* Amount */}
+              <div style={{ flexShrink: 0, fontFamily: 'Cabin, sans-serif', fontSize: '14px', fontWeight: 700, color: '#1a3a6b', minWidth: '120px', textAlign: 'right', whiteSpace: 'nowrap' }}>{uc.amount}</div>
+            </div>
+          ))}
         </div>
         {/* Footer */}
-        <div style={{ padding: '10px 20px', borderTop: '1px solid #e4e6e7', background: '#f6f7f7', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
-          <span style={{ fontFamily: 'Lato, sans-serif', fontSize: '11px', color: '#89919a' }}>Bertelsmann Invoice Processing Automation · Demo Scope · Accenture</span>
-          <button onClick={onClose} style={{ padding: '6px 16px', borderRadius: '6px', border: '1px solid #c8cccf', background: '#fff', fontSize: '13px', cursor: 'pointer', fontFamily: 'Lato, sans-serif', color: '#4a555c', fontWeight: 600 }}>Close</button>
+        <div style={{ padding: '12px 24px', borderTop: '1px solid #e4e6e7', background: '#f6f7f7', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+          <span style={{ fontFamily: 'Lato, sans-serif', fontSize: '11px', color: '#aab0b5' }}>Bertelsmann Invoice Processing Automation · Accenture</span>
+          <button onClick={onClose} style={{ padding: '7px 20px', borderRadius: '6px', border: '1px solid #c8cccf', background: '#fff', fontSize: '13px', cursor: 'pointer', fontFamily: 'Lato, sans-serif', color: '#4a555c', fontWeight: 600 }}>Close</button>
         </div>
       </div>
     </div>
