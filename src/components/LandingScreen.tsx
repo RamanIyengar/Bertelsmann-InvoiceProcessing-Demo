@@ -234,7 +234,7 @@ export function LandingScreen({ onSelectOutlook, onSelectSAP }: Props) {
               onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)' }}
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1" y="2" width="14" height="12" rx="1.5" /><path d="M4 6h8M4 9h6" strokeLinecap="round" /></svg>
-              Bertelsmann Use Cases
+              List of Use Cases
             </button>
 
             <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.15)' }} />
