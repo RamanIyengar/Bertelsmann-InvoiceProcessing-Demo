@@ -2637,9 +2637,10 @@ function CommunicationPreviewModal({ to, cc, subject, body, bodyHtml, subtitle, 
   to: string; cc: string; subject: string; body?: string; bodyHtml?: string; subtitle: string;
   onSend: () => void; onClose: () => void;
 }) {
+  const [maximized, setMaximized] = useState(false)
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }} onClick={onClose}>
-      <div style={{ background: '#fff', borderRadius: '10px', width: '100%', maxWidth: '540px', maxHeight: '90vh', boxShadow: '0 20px 60px rgba(0,0,0,0.25)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: maximized ? '0' : '24px' }} onClick={onClose}>
+      <div style={{ background: '#fff', borderRadius: maximized ? '0' : '10px', width: maximized ? '100vw' : '100%', height: maximized ? '100vh' : undefined, maxWidth: maximized ? '100vw' : '540px', maxHeight: maximized ? '100vh' : '90vh', boxShadow: '0 20px 60px rgba(0,0,0,0.25)', overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'all 0.2s ease' }} onClick={e => e.stopPropagation()}>
         <div style={{ padding: '16px 20px', borderBottom: '1px solid #e4e6e7', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
           <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#e7ecf5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <svg width="22" height="18" viewBox="0 0 22 18" fill="none"><rect x="1" y="1" width="20" height="16" rx="2" stroke="#1a3a6b" strokeWidth="1.5"/><polyline points="1,1 11,9 21,1" fill="none" stroke="#1a3a6b" strokeWidth="1.5"/></svg>
@@ -2648,9 +2649,17 @@ function CommunicationPreviewModal({ to, cc, subject, body, bodyHtml, subtitle, 
             <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '16px', fontWeight: 700, color: '#1d2f36' }}>Communication Preview</div>
             <div style={{ fontSize: '12px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{subtitle}</div>
           </div>
-          <button onClick={onClose} style={{ background: '#f6f7f7', border: '1px solid #e4e6e7', borderRadius: '6px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
-            <CloseIcon size={16} color="#6b767b" />
-          </button>
+          <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+            <button onClick={() => setMaximized(m => !m)} title={maximized ? 'Restore' : 'Maximise'} style={{ background: '#f6f7f7', border: '1px solid #e4e6e7', borderRadius: '6px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              {maximized
+                ? <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#6b767b" strokeWidth="1.6" strokeLinecap="round"><path d="M9 1h4v4M5 13H1V9M13 9v4h-4M1 5V1h4"/></svg>
+                : <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#6b767b" strokeWidth="1.6" strokeLinecap="round"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9"/></svg>
+              }
+            </button>
+            <button onClick={onClose} style={{ background: '#f6f7f7', border: '1px solid #e4e6e7', borderRadius: '6px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <CloseIcon size={16} color="#6b767b" />
+            </button>
+          </div>
         </div>
         <div style={{ flex: 1, overflowY: 'auto' }}>
           {[
