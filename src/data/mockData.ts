@@ -923,30 +923,31 @@ accounts@ingramcontent.com`,
 // Missing GR reply email — Sophie Brandt confirms SES booked (appears after notification sent)
 export const missingGRReplyEmail: ReplyEmail = {
   id: 'reply-missing-gr',
-  senderName: 'Sophie Brandt',
-  senderEmail: 's.brandt@fremantle.com',
-  subject: 'Re: Service Entry Sheet Confirmation Required — SPP-2026-0461 — Sunset Post Production Ltd',
+  senderName: 'SAP VIM — Automated Notification',
+  senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-8823 Completed — SES Posted by Sophie Brandt',
   time: 'just now',
   relatedInvoiceId: 'inv-2',
   isUnread: true,
-  body: `Dear AP Team,
+  body: `VIM Work Item WI-2026-8823 has been completed.
 
-Thank you for flagging this. I have now booked the Service Entry Sheet for the Ep.6 Picture Lock milestone against PO 4500288120.
+Completion Details:
+  Work Item ID:   WI-2026-8823
+  Completed By:   Sophie Brandt — Production Manager, Fremantle Germany
+  Action Taken:   Service Entry Sheet posted in SAP S/4HANA
 
-Details:
-  SES Number:    SES-2026-88412
-  PO Reference:  4500288120
-  Milestone:     Episode 6 — Picture Lock
-  SES Amount:    €312,000.00 EUR
-  Booked by:     Sophie Brandt
-  Booked in SAP: ${new Date().toLocaleDateString('en-GB')} at ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+SES Auto-Captured from SAP:
+  SES Number:     SES-2026-88412
+  PO Reference:   4500288120
+  Milestone:      Episode 6 — Picture Lock
+  SES Amount:     €312,000.00 EUR
+  Booked in SAP:  ${new Date().toLocaleDateString('en-GB')} at ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+  Company Code:   BERT | Plant: DE01
 
-The SES is now confirmed in SAP S/4HANA (plant DE01, company code BERT). You may proceed with invoice processing and payment.
+3-way match (PO · SES · Invoice) is now complete. Invoice SPP-2026-0461 has been released for payment processing.
 
-Best regards,
-Sophie Brandt
-Production Manager, Fremantle
-s.brandt@fremantle.com`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
 // Tax/VAT mismatch reply emails (appear in inbox after rejection notification is sent)
@@ -1051,212 +1052,186 @@ accounts.payable@bertelsmann.de`,
 // Missing GR — AP requests SES confirmation from Fremantle PO owner
 export const missingGRSentEmail: SentEmail = {
   id: 'sent-missing-gr',
-  toName: 'Sophie Brandt',
-  toEmail: 's.brandt@fremantle.com',
-  subject: 'Service Entry Sheet Confirmation Required — SPP-2026-0461 — Sunset Post Production Ltd',
+  toName: 'SAP VIM — Fremantle Germany Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-8823 Dispatched — SES Confirmation — SPP-2026-0461',
   time: 'just now',
   relatedInvoiceId: 'inv-2',
-  body: `Dear Sophie,
+  body: `VIM Work Item WI-2026-8823 has been routed to Sophie Brandt's SAP VIM worklist.
 
-We have received invoice SPP-2026-0461 from Sunset Post Production Ltd for picture and sound post-production on "Coastlines" Season 2, Episode 6, referencing PO 4500288120.
+Work Item Details:
+  Work Item ID:   WI-2026-8823
+  Task Type:      Service Entry Sheet Confirmation
+  Priority:       HIGH
+  Assigned To:    Sophie Brandt — Production Manager, Fremantle Germany
+  Invoice:        SPP-2026-0461 — Sunset Post Production Ltd
+  Invoice Amount: €312,000.00 EUR
+  PO Number:      4500288120
+  Milestone:      Episode 6 — Picture Lock
+  Issue:          No SES found in SAP for this milestone
 
-Invoice Details:
-  Invoice Number:  SPP-2026-0461
-  Supplier:        Sunset Post Production Ltd
-  PO Reference:    4500288120
-  Milestone:       Episode 6 — Picture Lock
-  Invoice Amount:  €312,000.00 EUR
-  Payment Terms:   Net 45
+Sophie Brandt will receive this work item in her SAP VIM inbox. When she books the SES in SAP S/4HANA, the 3-way match (PO · SES · Invoice) will complete and the invoice will be released for payment automatically.
 
-Issue:
-Our system cannot locate a posted Service Entry Sheet (SES) for this milestone against PO 4500288120. A confirmed SES is required to complete the 3-way match (PO · SES · Invoice) before payment can be released.
-
-Action Required:
-Please confirm whether the Episode 6 Picture Lock milestone has been signed off and book the corresponding Service Entry Sheet in SAP S/4HANA (company code BERT, plant DE01) at your earliest convenience.
-
-Once the SES is posted, please reply to confirm and we will release the invoice for payment.
-
-Kind regards,
-Lena Fischer
-Accounts Payable — Bertelsmann Finance Operations
-accounts.payable@bertelsmann.de`,
+AP Automation Engine — SAP OpenText VIM
+Bertelsmann Finance Operations`,
 }
 
 // RRD paper cost surcharge — AP queries PRH Procurement on whether surcharge was pre-approved
 export const rrdDisputeSentEmail: SentEmail = {
   id: 'sent-rrd-dispute',
-  toName: 'Julia Hartmann — PRH Procurement',
-  toEmail: 'j.hartmann@penguinrandomhouse.com',
-  subject: 'Surcharge Pre-Approval Check — RRD-2026-660219 — Paper Cost Surcharge',
+  toName: 'SAP VIM — PRH Procurement Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-2281 Dispatched — Surcharge Pre-Approval Check — RRD-2026-660219',
   time: 'just now',
   relatedInvoiceId: 'inv-7',
-  body: `Dear Julia,
+  body: `VIM Work Item WI-2026-2281 has been routed to Julia Hartmann's SAP VIM worklist.
 
-AP has received invoice RRD-2026-660219 from RR Donnelley for the DK Complete Science Encyclopedia print run (Job Ref: PRH-DK-PRINT-2026-412), totalling $31,600.00 USD.
+Work Item Details:
+  Work Item ID:   WI-2026-2281
+  Task Type:      Surcharge Pre-Approval Check
+  Priority:       MEDIUM
+  Assigned To:    Julia Hartmann — Procurement Manager, Penguin Random House
+  Invoice:        RRD-2026-660219 — RR Donnelley
+  Invoice Amount: $31,600.00 USD (incl. $2,400.00 Clause 8.2 surcharge)
+  Framework:      PRH-RRD-PRINT-2024
 
-The invoice includes a Paper Cost Surcharge of $2,400.00 (8.2%), applied by RRD under Clause 8.2 (Material Cost Escalation) of Framework Agreement PRH-RRD-PRINT-2024. Clause 8.2 requires prior written notice from the supplier to the Client.
+Julia Hartmann will receive this work item in her SAP VIM inbox. She must confirm whether PRH Procurement issued advance written notice authorising the Q2 2026 PPPC-linked surcharge under Clause 8.2.
 
-Our AI agent has flagged this surcharge as it exceeds the agreed framework price of $29,200.00 and we have no internal record of pre-approval for a Q2 2026 PPPC-linked increase.
-
-Could you please confirm:
-  (a) Whether PRH Procurement received and acknowledged RRD's Q2 2026 surcharge bulletin; and
-  (b) Whether we should process the invoice at the full $31,600.00, or request a revised invoice at the framework rate of $29,200.00.
-
-We are holding the invoice pending your guidance. Your prompt response will allow us to avoid any delay to the payment run.
-
-Best regards,
-Lena Fischer
-Accounts Payable — Penguin Random House
-ap@penguinrandomhouse.com`,
+AP Automation Engine — SAP OpenText VIM
+Penguin Random House / Bertelsmann Finance Operations`,
 }
 
 export const rrdDisputeReplyEmail: ReplyEmail = {
   id: 'reply-rrd-dispute',
-  senderName: 'Julia Hartmann',
-  senderEmail: 'j.hartmann@penguinrandomhouse.com',
-  subject: 'Re: Surcharge Pre-Approval Check — RRD-2026-660219',
+  senderName: 'SAP VIM — Automated Notification',
+  senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-2281 Completed — Surcharge Approved by Julia Hartmann (PRH Procurement)',
   time: 'just now',
   relatedInvoiceId: 'inv-7',
   isUnread: true,
-  body: `Dear Lena,
+  body: `VIM Work Item WI-2026-2281 has been completed.
 
-Thank you for flagging this — good catch on the process check.
+Completion Details:
+  Work Item ID:   WI-2026-2281
+  Completed By:   Julia Hartmann — Procurement Manager, Penguin Random House
+  Decision:       APPROVED — Clause 8.2 surcharge is contractually authorised
 
-I can confirm that PRH Procurement did receive RRD's Q2 2026 Framework Bulletin (Ref: RRD-BULK-2026-Q2-PRH, dated March 15, 2026). The bulletin provided the 30-day advance written notice required under Clause 8.2 (Material Cost Escalation) of Framework Agreement PRH-RRD-PRINT-2024, and the PPPC index increase of 8.2% for Q2 2026 was acknowledged by our team.
+Confirmation Captured in VIM:
+  — RRD Q2 2026 Framework Bulletin: RRD-BULK-2026-Q2-PRH (received 15 Mar 2026)
+  — PPPC Paper Price Index Q2 2026: +8.2% (PPPC Weekly, 2 Apr 2026)
+  — Clause 8.2 advance notice: received and acknowledged by PRH Procurement on 17 Mar 2026
+  — Decision: Process invoice RRD-2026-660219 at full amount of $31,600.00 USD
 
-The surcharge of $2,400.00 on invoice RRD-2026-660219 is therefore contractually authorised. Please process the invoice at the full amount of $31,600.00.
+Invoice RRD-2026-660219 has been cleared for GL coding and payment posting.
 
-For your records:
-  — RRD Q2 2026 Framework Bulletin: RRD-BULK-2026-Q2-PRH (received March 15, 2026)
-  — PPPC Paper Price Index Q2 2026: +8.2% (PPPC Weekly, April 2, 2026)
-  — Clause 8.2 confirmation: Advance notice received and acknowledged by Procurement on March 17, 2026
-
-Happy to provide the acknowledgement email if needed for audit purposes. Please go ahead and post.
-
-Kind regards,
-Julia Hartmann
-Procurement Manager — Print & Production, Penguin Random House
-j.hartmann@penguinrandomhouse.com`,
+SAP VIM — Automated Workflow Notification
+Penguin Random House / Bertelsmann Finance Operations`,
 }
 
 // Standard GL approval — AP requests GL code confirmation for JVM invoice
 export const glApprovalSentEmail: SentEmail = {
   id: 'sent-gl-approval-jvm',
-  toName: 'Caroline Hoffmann — Marketing Director, BMS',
-  toEmail: 'c.hoffmann@bertelsmannmediagroup.de',
-  subject: 'GL Code Confirmation Required — JVM-2026-0623 — Campaign Creative Services (Jung von Matt AG)',
+  toName: 'SAP VIM — BMS Marketing Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-7714 Dispatched — GL Code Confirmation — JVM-2026-0623',
   time: 'just now',
   relatedInvoiceId: 'inv-6',
-  body: `Dear Caroline,
+  body: `VIM Work Item WI-2026-7714 has been routed to Caroline Hoffmann's SAP VIM worklist.
 
-AP has received invoice JVM-2026-0623 from Jung von Matt AG (€21,896.00 EUR incl. 19% VAT) for campaign creative and production services delivered to the Territory marketing team in June 2026. We need your confirmation as Cost Centre Owner before we can release the invoice for payment.
+Work Item Details:
+  Work Item ID:   WI-2026-7714
+  Task Type:      GL Code Confirmation
+  Priority:       MEDIUM
+  Assigned To:    Caroline Hoffmann — Marketing Director, Bertelsmann Marketing Services
+  Invoice:        JVM-2026-0623 — Jung von Matt AG
+  Invoice Amount: €21,896.00 EUR
+  Cost Centre:    CC-BMS-MKT-2026
+  Payment Terms:  Net 15 (due 1 Jul 2026)
 
-As this is a Non-PO invoice, our GL Coding Agent was unable to auto-assign an account with sufficient confidence. Three competing accounts were identified:
-
-  6610-002 — Marketing & Advertising    38%
+AI GL Coding Ambiguity (confirmation required):
+  6610-002 — Marketing & Advertising    38% ← top recommendation
   6620-001 — Creative Agency Fees       34%
   6630-005 — Brand & Campaign Services  28%
+  None exceeded the 60% auto-assign threshold.
 
-None exceeded the 60% auto-assign threshold. Could you please confirm:
+Caroline Hoffmann will receive this work item in her SAP VIM inbox. She must confirm the correct GL account and service receipt before the invoice can be released for payment.
 
-  1. Which GL account should be used for this invoice (6610-002 is the agent's top recommendation)?
-  2. That the services described below were received in full?
-
-Services delivered (per invoice):
-  — Creative Concept Development & Strategy     €6,200.00
-  — Key Visual Design (3 formats, 2 revisions)  €7,400.00
-  — Asset Production & Format Adaptation        €4,800.00
-  Net Total:                                    €18,400.00 EUR
-  VAT (19% DE):                                 €3,496.00 EUR
-  Invoice Total:                                €21,896.00 EUR
-
-Cost Centre:      CC-BMS-MKT-2026
-Campaign / Ref:   Territory Seasonal Campaign, June 2026
-Payment Terms:    Net 15 (due July 1, 2026)
-
-Once you confirm, we will apply the GL code and route for payment immediately.
-
-Kind regards,
-Lena Fischer
-Accounts Payable — Bertelsmann GBS
-ap-operations@bertelsmann.de`,
+AP Automation Engine — SAP OpenText VIM
+Bertelsmann Finance Operations`,
 }
 
 // IC Mismatch — AP notifies Pieter Janssen (IC Accounting) to trigger ICE reconciliation
 export const icMismatchSentEmail: SentEmail = {
   id: 'sent-ic-mismatch',
-  toName: 'Pieter Janssen',
-  toEmail: 'p.janssen@bertelsmann.de',
-  subject: 'ICE Reconciliation Required — IC-INV-FRM-88421 / IC-CLR-RTL-77120 — €15,500 Variance',
+  toName: 'SAP VIM — Bertelsmann Finance Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-6647 Dispatched — IC Reconciliation — IC-INV-FRM-88421 / €15,500 Variance',
   time: 'just now',
   relatedInvoiceId: 'inv-12',
-  body: `CC: Anja Krüger <a.krueger@bertelsmann.de>
+  body: `VIM Work Item WI-2026-6647 has been routed to Pieter Janssen's SAP VIM worklist.
 
-Dear Pieter,
+Work Item Details:
+  Work Item ID:   WI-2026-6647
+  Task Type:      Intercompany Reconciliation
+  Priority:       HIGH
+  Assigned To:    Pieter Janssen — Intercompany Accounting, Bertelsmann Finance
+  Also Notified:  Anja Krüger — AP Lead, Bertelsmann Finance Operations
 
-We have identified an intercompany posting mismatch on the following cross-charge and are requesting ICE reconciliation to clear the variance before payment can proceed.
-
-Intercompany Posting Details:
+IC Posting Details:
   IC Invoice (Fremantle Ltd UK):   IC-INV-FRM-88421   €214,000.00
   IC Clearing (RTL Deutschland):   IC-CLR-RTL-77120   €198,500.00
   Variance:                        €15,500.00
+  ICE Reference:                   ICE-REC-2026-0619
 
-ICE Reference:   ICE-REC-2026-0619
-Entities:        Fremantle Ltd (UK) ↔ RTL Deutschland GmbH
+Pieter Janssen will receive this work item in his SAP VIM inbox. He must reconcile both sides of the posting in ICE and complete the work item to release the invoice for payment.
 
-The Predictive IC & Royalty Agent has flagged this mismatch. The variance may relate to an unposted production cost recharge or a format rights adjustment not yet reflected on the RTL Deutschland side.
-
-Please review and reconcile both sides of this posting in the ICE system (ICE-REC-2026-0619). Once both entities are balanced, please reply to this email confirming clearance so we can release the invoice for payment posting.
-
-Kind regards,
-Lena Fischer
-Accounts Payable — Bertelsmann Finance Operations
-accounts.payable@bertelsmann.de`,
+AP Automation Engine — SAP OpenText VIM
+Bertelsmann Finance Operations`,
 }
 
 export const icMismatchReplyEmail: ReplyEmail = {
   id: 'reply-ic-mismatch',
-  senderName: 'Pieter Janssen',
-  senderEmail: 'p.janssen@bertelsmann.de',
-  subject: 'Re: ICE Reconciliation Required — IC-INV-FRM-88421 / IC-CLR-RTL-77120 — €15,500 Variance',
+  senderName: 'SAP VIM — Automated Notification',
+  senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-6647 Completed — ICE Reconciled by Pieter Janssen',
   time: 'just now',
   relatedInvoiceId: 'inv-12',
   isUnread: true,
-  body: `Hi Lena,
+  body: `VIM Work Item WI-2026-6647 has been completed.
 
-I've reviewed the posting and reconciled both sides in ICE (ICE-REC-2026-0619).
+Completion Details:
+  Work Item ID:   WI-2026-6647
+  Completed By:   Pieter Janssen — Intercompany Accounting, Bertelsmann Finance
+  Action Taken:   ICE reconciliation completed and both entities balanced
 
-The €15,500 variance was caused by a production cost recharge (Q3 format rights adjustment for "The Brilliant Friend" UK format) that had not yet been posted on the RTL Deutschland side. I've booked the corresponding IC clearing entry in RTL Deutschland's books and the ICE system now shows both entities as balanced.
+Reconciliation Summary (auto-captured from ICE):
+  IC Invoice (Fremantle UK):     IC-INV-FRM-88421   €214,000.00   ✓ Confirmed
+  IC Clearing (RTL Deutschland): IC-CLR-RTL-77120   €198,500.00   ✓ Updated
+  Format rights recharge posted: IC-ADJ-RTL-2026-09 €15,500.00    ✓ New entry
+  Net Position:                  €214,000.00   BALANCED ✓
+  ICE Reference:                 ICE-REC-2026-0619   Status: CLEARED
 
-Reconciliation Summary:
-  IC Invoice (Fremantle UK):          IC-INV-FRM-88421   €214,000.00   ✓ Confirmed
-  IC Clearing (RTL Deutschland):      IC-CLR-RTL-77120   €198,500.00   ✓ Updated
-  Format rights recharge posted:      IC-ADJ-RTL-2026-09 €15,500.00    ✓ New entry
-  Net position:                        €214,000.00   BALANCED ✓
+Invoice IC-INV-FRM-88421 has been cleared for payment posting.
 
-ICE Reference ICE-REC-2026-0619 is now closed — status: Cleared.
-
-You may proceed with payment posting for IC-INV-FRM-88421.
-
-Best regards,
-Pieter Janssen
-Intercompany Accounting — Bertelsmann Finance
-p.janssen@bertelsmann.de`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
-// PRT WBS coding — AP requests dual approval from Production Finance and RTL Group Content Finance
+// PRT WBS coding — VIM work item dispatched to Fremantle Germany Worklist
 export const prtGLSentEmail: SentEmail = {
   id: 'sent-prt-gl-approval',
-  toName: 'Claudia Bauer',
-  toEmail: 'c.bauer@fremantle.com',
-  subject: 'Production WBS Coding — Dual Approval Required — PXM-2026-FRM-1142 — Pixomondo GmbH',
+  toName: 'SAP VIM — Fremantle Germany Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-5390 Dispatched — WBS Coding DOA Approval — PXM-2026-FRM-1142',
   time: 'just now',
   relatedInvoiceId: 'inv-11',
-  body: `CC: Marc Olivier-Leblanc <m.olivier-leblanc@rtlgroup.de>
+  body: `Also Notified: Marc Olivier-Leblanc <m.olivier-leblanc@rtlgroup.de> (VP Finance Content, RTL Group)
 
-Dear Claudia (and Marc),
-
-We are requesting dual approval of the SAP production WBS coding string generated for the following Non-PO invoice from Pixomondo GmbH (VFX & Post-Production).
+SAP VIM Work Item Dispatched — WI-2026-5390
+Task Type:    WBS Coding — DOA Approval
+Priority:     High
+Assigned To:  Claudia Bauer — Production Finance Manager, Fremantle Germany
+Due By:       24 hours
 
 Invoice Details:
   Invoice Number:  PXM-2026-FRM-1142
@@ -1282,31 +1257,31 @@ Proposed WBS Coding:
   Episode Range:   E07-10
   Coding String:   FRM.PROD.2026.RT-S01.VFX.P-RT01-26.E07-10.C-PXM2026
 
-Per DOA policy for co-produced content, this requires:
-  1. Production Finance Manager approval (Claudia Bauer) — confirms episode cost split
-  2. VP Finance Content, RTL Group approval (Marc Olivier-Leblanc) — authorises co-production allocation
+Per DOA policy for co-produced content, dual approval is required:
+  1. Production Finance Manager (Claudia Bauer) — confirms episode cost split
+  2. VP Finance Content, RTL Group (Marc Olivier-Leblanc) — authorises co-production allocation
 
-Please reply confirming the per-episode cost split and your approval. Both approvals are required before the invoice can be released for payment.
+Please complete this work item in your SAP VIM worklist to confirm the per-episode cost split and approve the coding string. Both approvals are required before the invoice can be released for payment.
 
-Kind regards,
-Lena Fischer
-Accounts Payable — Bertelsmann Finance Operations
-accounts.payable@bertelsmann.de`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
-// Metro GL (internal) approval — AP requests GL code confirmation from cost centre owner
+// Metro GL (internal) approval — VIM work item dispatched to Arvato Connect Worklist
 export const metroGLSentEmail: SentEmail = {
   id: 'sent-metro-gl-approval',
-  toName: 'Markus Weber',
-  toEmail: 'm.weber@bertelsmann.de',
-  subject: 'GL Code Approval Required — DLT-2026-7741 — Deloitte Consulting GmbH',
+  toName: 'SAP VIM — Arvato Connect Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-4561 Dispatched — GL Code Approval — DLT-2026-7741',
   time: 'just now',
   relatedInvoiceId: 'inv-4',
-  body: `CC: Anja Krüger <a.krueger@bertelsmann.de>
+  body: `Also Notified: Anja Krüger <a.krueger@bertelsmann.de> (AP Lead, Bertelsmann Finance Operations)
 
-Dear Markus,
-
-We have received a Non-PO invoice from Deloitte Consulting GmbH for advisory services provided to Arvato Connect in May 2026. The invoice requires GL code approval before it can proceed to payment.
+SAP VIM Work Item Dispatched — WI-2026-4561
+Task Type:    GL Code Approval
+Priority:     Medium
+Assigned To:  Markus Weber — Cost Centre Owner, Arvato Connect
+Due By:       48 hours
 
 Invoice Details:
   Invoice Number:  DLT-2026-7741
@@ -1324,30 +1299,27 @@ GL Account Options (AI confidence scores):
   6300-007 — Professional Services      ambiguous
   6810-002 — Project / Transformation   ambiguous
 
-As cost centre owner for Arvato Connect, could you please confirm the correct GL account for this engagement? Anja Krüger (AP Lead) is copied for authorisation.
+As cost centre owner for Arvato Connect, please complete this work item in your SAP VIM worklist to confirm the correct GL account for this engagement. Anja Krüger (AP Lead) has been notified and will provide authorisation once you complete your review.
 
-Kind regards,
-Lena Fischer
-Accounts Payable — Bertelsmann Finance Operations
-accounts.payable@bertelsmann.de`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
-// Royalty mismatch reply — Claire Newton confirms contract rate and corrected amount
+// Royalty mismatch reply — VIM completion notification: Claire Newton confirmed rate
 export const royaltyMismatchReplyEmail: ReplyEmail = {
   id: 'reply-royalty-mismatch',
-  senderName: 'Claire Newton',
-  senderEmail: 'c.newton@penguinrandomhouse.com',
-  subject: 'Re: Royalty Rate Deviation — WYL-RY-2026-0312 — Eleanor Vance, "The Long Horizon"',
+  senderName: 'SAP VIM — Automated Notification',
+  senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-3312 Completed — Royalty Rate Confirmed by Claire Newton',
   time: 'just now',
   relatedInvoiceId: 'inv-13',
   isUnread: true,
-  body: `Dear AP Team,
+  body: `SAP VIM Work Item Completed — WI-2026-3312
+Task Type:    Royalty Rate Review
+Completed By: Claire Newton — Royalties Manager, Penguin Random House LLC
+Completed At: 2026-07-03 14:22 UTC
 
-Thank you for flagging this deviation on royalty invoice WYL-RY-2026-0312 from The Wylie Agency LLC.
-
-I have reviewed the invoice against contract PRH-CTR-2023-4471. The Wylie Agency has invoiced at 15.0%; however, the contract specifies a hardback net receipts royalty rate of 12.5%.
-
-Determination:
+Determination captured from SAP VIM worklist:
   Contract Rate:     12.5% (correct)
   Invoiced Rate:     15.0% (overstated by 2.5%)
   Corrected Amount:  $27,000.00 USD
@@ -1355,27 +1327,27 @@ Determination:
   Basis:             Hardback net receipts H1 2026
   Contract Ref:      PRH-CTR-2023-4471
 
-I have contacted The Wylie Agency, who have confirmed the 12.5% rate applies and accepted the corrected amount of $27,000.00 USD.
+Claire Newton confirmed: The Wylie Agency has accepted the corrected amount of $27,000.00 USD. Invoice WYL-RY-2026-0312 may proceed to payment at the contract rate of 12.5%.
 
-Please proceed with payment at the contract rate. The deviation is resolved — no further action required from the AP team.
+Next Step: Invoice cleared for payment posting at corrected amount.
 
-Best regards,
-Claire Newton
-Royalties Manager — Penguin Random House LLC
-c.newton@penguinrandomhouse.com`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
-// Sent email — AP team notifies Claire Newton of royalty rate deviation
+// Sent — VIM work item dispatched to PRH Royalties Worklist for royalty rate review
 export const royaltyDeviationSentEmail: SentEmail = {
   id: 'sent-royalty-deviation',
-  toName: 'Claire Newton',
-  toEmail: 'c.newton@penguinrandomhouse.com',
-  subject: 'Royalty Rate Deviation — WYL-RY-2026-0312 — Eleanor Vance, "The Long Horizon"',
+  toName: 'SAP VIM — PRH Royalties Worklist',
+  toEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-3312 Dispatched — Royalty Rate Review — WYL-RY-2026-0312',
   time: 'just now',
   relatedInvoiceId: 'inv-13',
-  body: `Dear Claire,
-
-We are writing to flag a royalty rate deviation on the following invoice received from The Wylie Agency LLC.
+  body: `SAP VIM Work Item Dispatched — WI-2026-3312
+Task Type:    Royalty Rate Review
+Priority:     Medium
+Assigned To:  Claire Newton — Royalties Manager, Penguin Random House LLC
+Due By:       48 hours
 
 Invoice Details:
   Invoice Number:   WYL-RY-2026-0312
@@ -1391,13 +1363,10 @@ Rate Deviation Detected:
   Amount at 12.5%:  $27,000.00
   Variance:         $5,400.00 USD
 
-Our AI agent has cross-referenced the invoice against the abstracted contract terms (PRH-CTR-2023-4471) and identified a deviation of $5,400.00. Could you please confirm the correct rate and authorise payment at the appropriate amount?
+The Royalty Rate Review Agent has cross-referenced invoice WYL-RY-2026-0312 against contract terms (PRH-CTR-2023-4471) and identified a rate deviation of $5,400.00. Please complete this work item in your SAP VIM worklist to confirm the correct rate and authorise payment at the appropriate amount.
 
-Please reply to this email with your confirmation. No action is required from your side if the invoiced rate of 15.0% is correct and reflects an agreed contract amendment we are not yet aware of.
-
-Kind regards,
-Bertelsmann AP Team
-accounts.payable@bertelsmann.de`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
 // Corrected invoice submitted by supplier after rejection
@@ -1447,91 +1416,97 @@ export const correctedTaxInvoice: Invoice = {
 
 export const glApprovalReplyEmail: ReplyEmail = {
   id: 'reply-gl-approval',
-  senderName: 'Caroline Hoffmann',
-  senderEmail: 'c.hoffmann@bertelsmannmediagroup.de',
-  subject: 'Re: GL Code Confirmation Required — JVM-2026-0623 — Campaign Creative Services (Jung von Matt AG)',
+  senderName: 'SAP VIM — Automated Notification',
+  senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+  subject: 'VIM WI-2026-7714 Completed — GL Code Confirmed by Caroline Hoffmann',
   time: 'just now',
   relatedInvoiceId: 'inv-6',
   isUnread: true,
-  body: `Hi Lena,
+  body: `SAP VIM Work Item Completed — WI-2026-7714
+Task Type:    GL Code Confirmation
+Completed By: Caroline Hoffmann — Marketing Director, Bertelsmann Marketing Services
+Completed At: 2026-07-03 11:47 UTC
 
-Thanks for checking — happy to confirm both points.
-
-GL Account: please use 6610-002 — Marketing & Advertising. This is the correct account for external creative agency fees charged to the Territory campaign budget under CC-BMS-MKT-2026.
-
-Delivery confirmation: all three deliverables were received and accepted:
-  — Creative Concept Development & Strategy: signed off June 12, 2026
-  — Key Visual Design (3 formats, 2 revisions): final assets received June 14, 2026
-  — Asset Production & Format Adaptation: approved and live as of June 16, 2026
-
-The net invoice amount of €18,400.00 EUR (plus €3,496.00 VAT at 19%, total €21,896.00) is correct and the work has been delivered to spec. Please proceed with payment.
-
-For the cost assignment:
+GL confirmation captured from SAP VIM worklist:
   GL Account:     6610-002  Marketing & Advertising
   Cost Centre:    CC-BMS-MKT-2026
   Business Unit:  Bertelsmann Marketing Services — Territory
   Tax Code:       DE-VAT-STD  (standard rate 19% — domestic German B2B service)
 
-Best,
-Caroline Hoffmann
-Marketing Director — Bertelsmann Marketing Services
-c.hoffmann@bertelsmannmediagroup.de`,
+Delivery confirmed: all three deliverables received and accepted:
+  — Creative Concept Development & Strategy: signed off June 12, 2026
+  — Key Visual Design (3 formats, 2 revisions): final assets received June 14, 2026
+  — Asset Production & Format Adaptation: approved and live as of June 16, 2026
+
+Invoice amount of €21,896.00 (net €18,400.00 + VAT €3,496.00) confirmed correct. Invoice JVM-2026-0623 cleared for payment posting.
+
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
 }
 
 export const metroGLReplyEmails: ReplyEmail[] = [
   {
     id: 'reply-metro-gl-1',
-    senderName: 'Markus Weber',
-    senderEmail: 'm.weber@bertelsmann.de',
-    subject: 'Re: GL Code Approval Required — DLT-2026-7741',
+    senderName: 'SAP VIM — Automated Notification',
+    senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+    subject: 'VIM WI-2026-4561 Part-Completed — GL Approved by Markus Weber',
     time: 'just now',
     relatedInvoiceId: 'inv-4',
     isUnread: true,
-    body: `Hi Lena,
+    body: `SAP VIM Work Item Part-Completed — WI-2026-4561
+Task Type:    GL Code Approval
+Actioned By:  Markus Weber — Cost Centre Owner, Arvato Connect
+Actioned At:  2026-07-03 10:14 UTC
 
-Thanks for flagging this. I've reviewed the GL coding options for the Deloitte Consulting invoice (DLT-2026-7741, €42,840.00).
+GL determination captured from SAP VIM worklist:
+  GL Account:  6720-001 — Management Consulting (confirmed correct)
 
-GL account 6720-001 (Management Consulting) is correct for this invoice — this Arvato Connect engagement is an advisory/consulting spend and should be coded to Management Consulting.
+Markus Weber's note: This Arvato Connect engagement is advisory/consulting spend and should be coded to Management Consulting. Proceed with GL 6720-001.
 
-Please proceed with GL 6720-001.
+Next Step: Awaiting AP Lead authorisation (Anja Krüger) to complete the work item.
 
-Markus Weber
-Cost Centre Owner — Arvato Connect`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
   },
   {
     id: 'reply-metro-gl-2',
-    senderName: 'Anja Krüger',
-    senderEmail: 'a.krueger@bertelsmann.de',
-    subject: 'Re: GL Code Approval Required — DLT-2026-7741 — AP Lead Authorised',
+    senderName: 'SAP VIM — Automated Notification',
+    senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+    subject: 'VIM WI-2026-4561 Completed — AP Lead Authorisation by Anja Krüger',
     time: 'just now',
     relatedInvoiceId: 'inv-4',
     isUnread: true,
-    body: `Hi Lena,
+    body: `SAP VIM Work Item Completed — WI-2026-4561
+Task Type:    GL Code Approval
+Completed By: Anja Krüger — AP Lead, Bertelsmann Finance Operations
+Completed At: 2026-07-03 10:31 UTC
 
-Confirming AP Lead authorisation for GL account 6720-001 (Management Consulting) on invoice DLT-2026-7741 from Deloitte Consulting GmbH (€42,840.00).
+AP Lead authorisation captured from SAP VIM worklist:
+  GL Account:  6720-001 — Management Consulting (authorised)
+  Invoice:     DLT-2026-7741 — Deloitte Consulting GmbH (€42,840.00)
 
-GL code approved. Invoice is cleared for payment processing. Lena, please go ahead and approve the invoice to send to the SAP Payment Run.
+GL code approved. Invoice DLT-2026-7741 cleared for payment processing.
 
-Anja Krüger
-AP Lead`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
   },
 ]
 
 export const prtGLReplyEmails: ReplyEmail[] = [
   {
     id: 'reply-prt-gl-1',
-    senderName: 'Claudia Bauer',
-    senderEmail: 'c.bauer@fremantle.com',
-    subject: 'Re: Production WBS Coding — Dual Approval Required — PXM-2026-FRM-1142 — Pixomondo GmbH',
+    senderName: 'SAP VIM — Automated Notification',
+    senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+    subject: 'VIM WI-2026-5390 Part-Completed — WBS Coding Approved by Claudia Bauer',
     time: 'just now',
     relatedInvoiceId: 'inv-11',
     isUnread: true,
-    body: `Hi Lena,
+    body: `SAP VIM Work Item Part-Completed — WI-2026-5390
+Task Type:    WBS Coding — DOA Approval
+Actioned By:  Claudia Bauer — Production Finance Manager, Fremantle Germany
+Actioned At:  2026-07-03 09:55 UTC
 
-I have reviewed the production WBS coding for invoice PXM-2026-FRM-1142 from Pixomondo GmbH (€175,000.00 — "Rising Tides" S01 VFX, EP7–10).
-
-I can confirm the per-episode cost allocation as per the Production Cost Allocation Schedule signed on 28 Aug 2026:
-
+WBS approval captured from SAP VIM worklist:
   Episodes 7–8 (Fremantle-funded):      €87,500  →  FRM.PROD.2026.RT-S01.VFX
   Episodes 9–10 (Canal+ co-production):  €87,500  →  FRM.COPRO.2026.RT-S01.VFX
                                                       (50% to be cross-charged to Canal+ International under CPRO-2026-RT-003)
@@ -1539,37 +1514,40 @@ I can confirm the per-episode cost allocation as per the Production Cost Allocat
 Full coding string confirmed:
   FRM.PROD.2026.RT-S01.VFX.P-RT01-26.E07-10.C-PXM2026
 
-The VFX deliverables for all four episodes have been signed off by the production team. Pixomondo met all contractual specifications per Milestone 3.
+VFX deliverables for all four episodes signed off by the production team. Pixomondo met all contractual specifications per Milestone 3.
 
-I approve as Production Finance Manager. Please proceed once Marc's approval is also received.
+Claudia Bauer approved as Production Finance Manager.
 
-Claudia Bauer
-Production Finance Manager — Fremantle Germany
-c.bauer@fremantle.com`,
+Next Step: Awaiting VP Finance Content approval (Marc Olivier-Leblanc, RTL Group) to complete DOA.
+
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
   },
   {
     id: 'reply-prt-gl-2',
-    senderName: 'Marc Olivier-Leblanc',
-    senderEmail: 'm.olivier-leblanc@rtlgroup.de',
-    subject: 'Re: Production WBS Coding — Dual Approval Required — PXM-2026-FRM-1142 — Pixomondo GmbH',
+    senderName: 'SAP VIM — Automated Notification',
+    senderEmail: 'vim-no-reply@sap.bertelsmann.de',
+    subject: 'VIM WI-2026-5390 Completed — DOA Approval by Marc Olivier-Leblanc',
     time: 'just now',
     relatedInvoiceId: 'inv-11',
     isUnread: true,
-    body: `Lena,
+    body: `SAP VIM Work Item Completed — WI-2026-5390
+Task Type:    WBS Coding — DOA Approval
+Completed By: Marc Olivier-Leblanc — VP Finance Content, RTL Group
+Completed At: 2026-07-03 10:08 UTC
 
-I have reviewed the co-production cost allocation for PXM-2026-FRM-1142 (Pixomondo, €175,000.00).
+DOA approval captured from SAP VIM worklist:
+  Coding String:  FRM.PROD.2026.RT-S01.VFX.P-RT01-26.E07-10.C-PXM2026
+  WBS Elements:   FRM.PROD.2026.RT-S01.VFX / FRM.COPRO.2026.RT-S01.VFX
+  Cost Centre:    CC-FRM-PROD-2026
+  Account:        6320-001  Content Production — VFX & Digital Post-Production
 
-Claudia's split is correct and consistent with the co-production agreement registered under CPRO-2026-RT-003. The Canal+ International cross-charge for Episodes 9–10 (€43,750.00 — 50% of the co-produced episode costs) will be initiated through the IC billing run at month-end.
+Canal+ International cross-charge for Episodes 9–10 (€43,750.00 — 50% co-produced episode costs) will be initiated through the IC billing run at month-end (CPRO-2026-RT-003).
 
-Coding string:  FRM.PROD.2026.RT-S01.VFX.P-RT01-26.E07-10.C-PXM2026
+All DOA approvals complete. Invoice PXM-2026-FRM-1142 (€175,000.00) cleared for payment posting.
 
-The WBS elements, cost centre (CC-FRM-PROD-2026), and account (6320-001 Content Production — VFX) are all correct. I am satisfied that the allocation is appropriate and within the approved production budget for "Rising Tides" S01.
-
-Approved. This invoice may proceed to payment.
-
-Marc Olivier-Leblanc
-VP Finance, Content — RTL Group
-m.olivier-leblanc@rtlgroup.de`,
+SAP VIM — Automated Workflow Notification
+Bertelsmann Finance Operations`,
   },
 ]
 

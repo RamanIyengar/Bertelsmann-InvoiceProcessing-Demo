@@ -2526,8 +2526,8 @@ function StickyGLPanel({ onDraftEmail, appliedCode, manualGLCode, onApply, glApp
       <div style={{ flexShrink: 0, borderTop: '2px solid #b06b00', background: '#fff3d6', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2.5px solid #b06b00', borderTopColor: 'transparent', animation: 'spin 0.8s linear infinite', flexShrink: 0 }} />
         <div>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>{disputeVariant ? 'Procurement Query Sent — Awaiting Response' : 'GL Approval Email Sent — Awaiting Response'}</div>
-          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{disputeVariant ? 'Query sent to PRH Procurement (j.hartmann@penguinrandomhouse.com). Check Outlook for their response.' : 'Waiting for GL approval reply. Check Outlook for an incoming response.'}</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>{disputeVariant ? 'VIM Work Item Routed — Awaiting PRH Procurement Confirmation' : 'VIM Work Item Routed — Awaiting GL Confirmation'}</div>
+          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{disputeVariant ? 'WI-2026-2281 sent to Julia Hartmann\'s SAP VIM worklist. Awaiting procurement surcharge confirmation.' : 'WI-2026-7714 sent to Caroline Hoffmann\'s SAP VIM worklist. Awaiting GL code confirmation.'}</div>
         </div>
       </div>
     )
@@ -2538,13 +2538,13 @@ function StickyGLPanel({ onDraftEmail, appliedCode, manualGLCode, onApply, glApp
     return (
       <div style={{ flexShrink: 0, borderTop: '2px solid #b06b00', background: '#fff', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '16px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ flexShrink: 0 }}>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>{disputeVariant ? 'Step 2 of 3: Request Procurement Confirmation' : 'Step 2 of 3: Send GL Approval Email'}</div>
-          <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{disputeVariant ? <>Code <strong style={{ fontFamily: 'monospace' }}>{appliedCode}</strong> applied. Send the internal query to PRH Procurement to confirm whether the Clause 8.2 surcharge was pre-approved.</> : <>Code <strong style={{ fontFamily: 'monospace' }}>{appliedCode}</strong> applied. Send the GL approval email to authorise before posting.</>}</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>{disputeVariant ? 'Step 2 of 3: Route VIM Approval Task to PRH Procurement' : 'Step 2 of 3: Route VIM Approval Task'}</div>
+          <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{disputeVariant ? <>Code <strong style={{ fontFamily: 'monospace' }}>{appliedCode}</strong> applied. Route VIM work item to Julia Hartmann (PRH Procurement) to confirm whether the Clause 8.2 surcharge was pre-approved.</> : <>Code <strong style={{ fontFamily: 'monospace' }}>{appliedCode}</strong> applied. Route VIM work item to Caroline Hoffmann (Cost Centre Owner) for GL code confirmation.</>}</div>
         </div>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px', flexShrink: 0 }}>
-          <button onClick={onDraftEmail} style={{ padding: '9px 20px', background: '#1a3a6b', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
-            <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" fill="none" stroke="white" strokeWidth="1.3"/><polyline points="0,0 7,7 14,0" fill="none" stroke="white" strokeWidth="1.3"/></svg>
-            {disputeVariant ? 'Send Procurement Query' : 'Send GL Approval Email'}
+          <button onClick={onDraftEmail} style={{ padding: '9px 20px', background: '#1c3f6e', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><rect x="8.5" y="8.5" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><path d="M3.25 5.5v3.5Q3.25 11 6 11h2.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" fill="none"/><polyline points="7.5,9.5 8.5,11 7.5,12.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+            {disputeVariant ? 'Route VIM Work Item' : 'Route VIM Approval Task'}
           </button>
           <button style={{ padding: '9px 18px', background: '#fff', color: '#b91f1f', border: '1.5px solid #b91f1f', borderRadius: '6px', fontSize: '14px', fontFamily: 'Lato, sans-serif', fontWeight: 700, cursor: 'pointer' }}>Reject</button>
         </div>
@@ -2582,8 +2582,8 @@ function StickyMissingGRPanel({ notificationSent, onOpenComms }: { notificationS
       <div style={{ flexShrink: 0, borderTop: '2px solid #1b823f', background: '#e8f5ee', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#1b823f', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><CheckIcon size={18} /></div>
         <div>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1b823f' }}>Communication Sent — Awaiting GR Confirmation</div>
-          <div style={{ fontSize: '13px', color: '#1a5c30', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Production owner Sophie Brandt has been notified. Invoice on hold pending Service Entry Sheet confirmation.</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1b823f' }}>VIM Work Item Routed — Awaiting SES Confirmation</div>
+          <div style={{ fontSize: '13px', color: '#1a5c30', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>WI-2026-8823 sent to Sophie Brandt's SAP VIM worklist. Invoice on hold pending Service Entry Sheet confirmation in SAP.</div>
         </div>
       </div>
     )
@@ -2595,9 +2595,9 @@ function StickyMissingGRPanel({ notificationSent, onOpenComms }: { notificationS
         <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Contact the production owner to book the Service Entry Sheet in SAP before processing can continue</div>
       </div>
       <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px', flexShrink: 0 }}>
-        <button onClick={onOpenComms} style={{ padding: '9px 20px', background: '#1a3a6b', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
-          <svg width="14" height="12" viewBox="0 0 14 12" fill="white"><rect x="0" y="0" width="14" height="12" rx="2" fill="none" stroke="white" strokeWidth="1.3"/><polyline points="0,0 7,7 14,0" fill="none" stroke="white" strokeWidth="1.3"/></svg>
-          Generate Communication
+        <button onClick={onOpenComms} style={{ padding: '9px 20px', background: '#1c3f6e', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><rect x="8.5" y="8.5" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><path d="M3.25 5.5v3.5Q3.25 11 6 11h2.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" fill="none"/><polyline points="7.5,9.5 8.5,11 7.5,12.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+          Route VIM Work Item
         </button>
         <button style={{ padding: '9px 18px', background: '#b91f1f', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '14px', fontFamily: 'Lato, sans-serif', fontWeight: 700, cursor: 'pointer' }}>Reject</button>
       </div>
@@ -3002,6 +3002,117 @@ function applyTranslation(text: string, lang: string): string {
   return result
 }
 
+function AssigneeRow({ label, name }: { label: string; name: string }) {
+  const initials = name.split(/[\s—\-,]+/).filter(Boolean).slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('')
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: '#1c3f6e', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{ fontSize: '11px', fontWeight: 700, color: '#fff', fontFamily: 'Cabin, sans-serif' }}>{initials}</span>
+      </div>
+      <div>
+        <div style={{ fontSize: '12.5px', fontWeight: 600, color: '#1d2f36', fontFamily: 'Lato, sans-serif' }}>{name}</div>
+        <div style={{ fontSize: '10.5px', color: '#6b767b', fontFamily: 'Lato, sans-serif' }}>{label} · SAP VIM Worklist</div>
+      </div>
+    </div>
+  )
+}
+
+function VIMWorkflowModal({ workItemId, workItemType, priority, assignedTo, ccAssignee, subject, body, bodyHtml, subtitle, onSend, onClose }: {
+  workItemId: string; workItemType: string; priority: 'High' | 'Medium' | 'Low';
+  assignedTo: string; ccAssignee?: string;
+  subject: string; body?: string; bodyHtml?: string; subtitle: string;
+  onSend: () => void; onClose: () => void;
+}) {
+  const [maximized, setMaximized] = useState(false)
+  const priorityColor = priority === 'High' ? '#b91f1f' : priority === 'Medium' ? '#b06b00' : '#1b823f'
+  const priorityBg = priority === 'High' ? '#fdecea' : priority === 'Medium' ? '#fff8e8' : '#f0fdf4'
+  const dueDate = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: maximized ? '0' : '24px' }} onClick={onClose}>
+      <div style={{ background: '#fff', borderRadius: maximized ? '0' : '10px', width: maximized ? '100vw' : '100%', height: maximized ? '100vh' : undefined, maxWidth: maximized ? '100vw' : '560px', maxHeight: maximized ? '100vh' : '90vh', boxShadow: '0 20px 60px rgba(0,0,0,0.25)', overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'all 0.2s ease' }} onClick={e => e.stopPropagation()}>
+        <div style={{ background: '#1c3f6e', padding: '14px 20px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+          <div style={{ width: '38px', height: '38px', borderRadius: '6px', background: 'rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="2" y="2" width="6" height="6" rx="1" fill="white" opacity="0.9"/>
+              <rect x="12" y="2" width="6" height="6" rx="1" fill="white" opacity="0.9"/>
+              <rect x="7" y="12" width="6" height="6" rx="1" fill="white" opacity="0.9"/>
+              <path d="M5 8v3.5h5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.8"/>
+              <path d="M15 8v3.5h-5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.8"/>
+            </svg>
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#fff' }}>VIM Workflow Notification</div>
+            <div style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.7)', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>SAP OpenText VIM · {subtitle}</div>
+          </div>
+          <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+            <button onClick={() => setMaximized(m => !m)} title={maximized ? 'Restore' : 'Maximise'} style={{ background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: '6px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              {maximized
+                ? <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round"><path d="M9 1h4v4M5 13H1V9M13 9v4h-4M1 5V1h4"/></svg>
+                : <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9"/></svg>
+              }
+            </button>
+            <button onClick={onClose} style={{ background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: '6px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <CloseIcon size={15} color="white" />
+            </button>
+          </div>
+        </div>
+        <div style={{ background: '#f0f4f9', padding: '11px 20px', borderBottom: '1px solid #dce4ef', display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif' }}>Work Item</div>
+            <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#1c3f6e', fontFamily: 'monospace', marginTop: '2px' }}>{workItemId}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif' }}>Task Type</div>
+            <div style={{ fontSize: '12.5px', fontWeight: 600, color: '#1d2f36', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{workItemType}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif' }}>Priority</div>
+            <div style={{ marginTop: '3px' }}>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: priorityColor, background: priorityBg, padding: '2px 8px', borderRadius: '4px', fontFamily: 'Lato, sans-serif', letterSpacing: '0.04em' }}>{priority.toUpperCase()}</span>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif' }}>Due By</div>
+            <div style={{ fontSize: '12.5px', color: '#1d2f36', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>{dueDate}</div>
+          </div>
+        </div>
+        <div style={{ flex: 1, overflowY: 'auto' }}>
+          <div style={{ padding: '13px 20px', borderBottom: '1px solid #f0f1f1', background: '#fafbfc' }}>
+            <div style={{ fontSize: '10.5px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif', marginBottom: '10px' }}>Assigned To</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <AssigneeRow label="Primary Approver" name={assignedTo} />
+              {ccAssignee && <AssigneeRow label="Also Notified" name={ccAssignee} />}
+            </div>
+          </div>
+          <div style={{ padding: '11px 20px', borderBottom: '1px solid #f0f1f1' }}>
+            <div style={{ fontSize: '10.5px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif', marginBottom: '4px' }}>Subject</div>
+            <div style={{ fontSize: '13px', fontWeight: 600, color: '#1d2f36', fontFamily: 'Lato, sans-serif' }}>{subject}</div>
+          </div>
+          <div style={{ padding: '13px 20px' }}>
+            <div style={{ fontSize: '10.5px', fontWeight: 700, color: '#6b767b', textTransform: 'uppercase', letterSpacing: '0.06em', fontFamily: 'Lato, sans-serif', marginBottom: '10px' }}>Task Instructions</div>
+            {bodyHtml
+              ? <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '13px', color: '#1d2f36', lineHeight: '1.7' }} dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+              : <pre style={{ fontFamily: 'Lato, sans-serif', fontSize: '13px', color: '#1d2f36', lineHeight: '1.7', whiteSpace: 'pre-wrap', margin: 0 }}>{body}</pre>
+            }
+          </div>
+        </div>
+        <div style={{ padding: '13px 20px', borderTop: '1px solid #e4e6e7', display: 'flex', gap: '10px', justifyContent: 'flex-end', background: '#fafbfc' }}>
+          <button onClick={onClose} style={{ padding: '9px 18px', background: '#fff', border: '1px solid #c8cccf', borderRadius: '6px', fontSize: '14px', color: '#6b767b', cursor: 'pointer', fontFamily: 'Lato, sans-serif' }}>Cancel</button>
+          <button onClick={() => { onSend(); onClose() }} style={{ padding: '9px 22px', background: '#1b6b2e', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '14px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="1" y="1" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/>
+              <rect x="8.5" y="8.5" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/>
+              <path d="M3.25 5.5v3.5Q3.25 11 6 11h2.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" fill="none"/>
+              <polyline points="7.5,9.5 8.5,11 7.5,12.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+            Route to VIM Worklist
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function CommunicationPreviewModal({ to, cc, subject, body, bodyHtml, subtitle, onSend, onClose, translations, htmlTranslations }: {
   to: string; cc: string; subject: string; body?: string; bodyHtml?: string; subtitle: string;
   onSend: () => void; onClose: () => void;
@@ -3229,14 +3340,30 @@ Diese Rechnung bleibt bis zur LES-Bestätigung gesperrt.
 Mit freundlichen Grüßen,
 Bertelsmann Kreditorenbuchhaltung — AP-Automatisierung`
 
+  const taskInstructions = `Please confirm service delivery and book the Service Entry Sheet (SES) in SAP so payment can be released for the following invoice, which is currently on hold.
+
+Invoice Details:
+  Invoice Number:   ${invoice.invoiceNumber}
+  Supplier:         ${invoice.supplier}
+  Invoice Amount:   ${cur}${invoice.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+  PO Number:        ${info.poNumber}
+  Issue:            No Service Entry Sheet found in SAP for this milestone
+
+Please book the SES in SAP S/4HANA (company code BERT, plant DE01) at your earliest convenience. If the milestone is not yet complete, please advise on the expected delivery date.
+
+This invoice will remain on hold until the SES is confirmed in SAP.
+
+AP Automation Engine — Bertelsmann Finance Operations`
+
   return (
-    <CommunicationPreviewModal
-      to={info.poOwnerEmail}
-      cc="ap-operations@bertelsmann.de"
+    <VIMWorkflowModal
+      workItemId="WI-2026-8823"
+      workItemType="Service Entry Sheet Confirmation"
+      priority="High"
+      assignedTo={`${info.poOwnerName} — Production Manager, Fremantle Germany`}
       subject={subject}
-      body={body}
-      translations={{ de: bodyDe }}
-      subtitle="Auto-generated by Service Entry / 3-Way Match Agent"
+      body={taskInstructions}
+      subtitle="Service Entry / 3-Way Match Agent"
       onSend={onSend}
       onClose={onClose}
     />
@@ -3293,14 +3420,34 @@ Mit freundlichen Grüßen,
 Lena Fischer
 Bertelsmann Kreditorenbuchhaltung`
 
+  const taskInstructions = `Please review the GL accounts identified by the AI Coding Agent and confirm the correct account for this invoice, which is currently on hold.
+
+GL Accounts Identified (ranked by AI confidence):
+${sortedConflicts.map((c, i) => `  ${i === 0 ? '★ ' : '  '}${c.code} – ${c.label}  (${c.percentage}%)${i === 0 ? ' ← AI top recommendation' : ''}`).join('\n')}
+
+The AI agent's top recommendation is ${topConflict.code} (${topConflict.label}) at ${topConflict.percentage}% confidence — below the 60% auto-assign threshold. As Cost Centre Owner, please confirm which GL account is correct. Anja Krüger (AP Lead) will provide final authorisation once your confirmation is received.
+
+Invoice Details:
+  Invoice Number:   ${invoice.invoiceNumber}
+  Supplier:         ${invoice.supplier}
+  Invoice Amount:   ${cur}${invoice.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+  Invoice Date:     ${invoice.extractedFields.invoiceDate}
+  Service:          ${invoice.extractedFields.expenseDescription ?? 'Advisory services'}
+
+The invoice will be released for payment immediately once both approvals are received.
+
+AP Automation Engine — Bertelsmann Finance Operations`
+
   return (
-    <CommunicationPreviewModal
-      to="m.weber@bertelsmann.de"
-      cc="a.krueger@bertelsmann.de"
+    <VIMWorkflowModal
+      workItemId="WI-2026-4561"
+      workItemType="GL Code Approval"
+      priority="Medium"
+      assignedTo="Markus Weber — Cost Centre Owner, Arvato Connect"
+      ccAssignee="Anja Krüger — AP Lead, Bertelsmann Finance Operations"
       subject={subject}
-      body={body}
-      translations={{ de: bodyDe }}
-      subtitle="Auto-generated by GL Coding Agent — Internal Approval Required"
+      body={taskInstructions}
+      subtitle="GL Coding Agent — Internal Dual Approval"
       onSend={onSend}
       onClose={onClose}
     />
@@ -3366,14 +3513,37 @@ Lena Fischer
 Kreditorenbuchhaltung — Bertelsmann Finance Operations
 accounts.payable@bertelsmann.de`
 
+  const taskInstructions = `Please review the royalty rate deviation on the following invoice and confirm the correct rate for payment authorisation.
+
+Invoice Details:
+  Invoice Number:   ${invoice.invoiceNumber}
+  Author:           ${info.author}
+  Title:            ${info.title}
+  Contract Ref:     ${info.contractRef}
+  Invoice Date:     ${invoice.extractedFields.invoiceDate}
+
+Rate Deviation Detected:
+  Invoiced Rate:    ${info.invoicedRate} on hardback net receipts
+  Contract Rate:    ${info.contractRate} on hardback net receipts (per SAP contract master)
+  Amount at ${info.invoicedRate}:  ${invoicedAmt}
+  Amount at ${info.contractRate}:  ${contractAmt}
+  Variance:         $${info.variance.toLocaleString('en-US', { minimumFractionDigits: 2 })} USD
+
+The AI agent has cross-referenced the invoice against abstracted contract terms (${info.contractRef}) and identified a $${info.variance.toLocaleString('en-US', { minimumFractionDigits: 2 })} deviation. Please confirm the correct rate and authorise payment at the appropriate amount.
+
+No action required if ${info.invoicedRate} reflects an agreed contract amendment — please complete this work item to confirm.
+
+AP Automation Engine — Bertelsmann Finance Operations`
+
   return (
-    <CommunicationPreviewModal
-      to={`${info.royaltyManagerName} <${info.royaltyManagerEmail}>`}
-      cc="ap-operations@bertelsmann.de"
+    <VIMWorkflowModal
+      workItemId="WI-2026-3312"
+      workItemType="Royalty Rate Review"
+      priority="Medium"
+      assignedTo={`${info.royaltyManagerName} — Royalties Manager, Penguin Random House`}
       subject={subject}
-      body={body}
-      translations={{ de: bodyDe }}
-      subtitle={`Auto-generated by Predictive IC & Royalty Agent — deviation flagged on ${invoice.invoiceNumber}`}
+      body={taskInstructions}
+      subtitle={`Predictive IC & Royalty Agent — deviation on ${invoice.invoiceNumber}`}
       onSend={onSend}
       onClose={onClose}
     />
@@ -3426,14 +3596,32 @@ Lena Fischer
 Kreditorenbuchhaltung — Bertelsmann Finance Operations
 accounts.payable@bertelsmann.de`
 
+  const taskInstructions = `Please reconcile both sides of the following intercompany posting in ICE and complete this work item to release the invoice for payment.
+
+Intercompany Posting Details:
+  IC Invoice (${info.entityA}):   ${info.docA}   ${fmt(info.amountA)}
+  IC Clearing (${info.entityB}):   ${info.docB}   ${fmt(info.amountB)}
+  Variance:                        ${fmt(info.variance)}
+
+ICE Reference:   ${info.iceRef}
+Entities:        ${info.entityA} ↔ ${info.entityB}
+
+The Predictive IC & Royalty Agent has flagged this mismatch. The variance may relate to an unposted production cost recharge or a format rights adjustment not yet reflected on the ${info.entityB} side.
+
+Please review and reconcile both sides of this posting in the ICE system (${info.iceRef}). Once both entities are balanced, complete this VIM work item to release the invoice for payment posting.
+
+AP Automation Engine — Bertelsmann Finance Operations`
+
   return (
-    <CommunicationPreviewModal
-      to={`${info.contactName} <${info.contactEmail}>`}
-      cc="a.krueger@bertelsmann.de"
+    <VIMWorkflowModal
+      workItemId="WI-2026-6647"
+      workItemType="Intercompany Reconciliation"
+      priority="High"
+      assignedTo={`${info.contactName} — Intercompany Accounting, Bertelsmann Finance`}
+      ccAssignee="Anja Krüger — AP Lead, Bertelsmann Finance Operations"
       subject={subject}
-      body={body}
-      translations={{ de: bodyDe }}
-      subtitle={`Auto-generated by Predictive IC & Royalty Agent — mismatch flagged on ${info.docA}`}
+      body={taskInstructions}
+      subtitle={`Predictive IC & Royalty Agent — mismatch on ${info.docA}`}
       onSend={onSend}
       onClose={onClose}
     />
@@ -3454,7 +3642,6 @@ function GLModal({ invoice, appliedCode, onSend, onClose }: { invoice: Invoice; 
       : `GL Code Confirmation Required — ${invoice.invoiceNumber} — Campaign Creative Services (${invoice.supplier})`
 
   const prtBodyHtml = `
-<p style="margin:0 0 14px">Dear Claudia &amp; Marc,</p>
 <p style="margin:0 0 14px">The <strong>Matching &amp; GL Advisor</strong> has generated a production WBS coding string for the invoice below. A <strong>co-production episode split</strong> has been detected (Episodes 9–10 are subject to the Canal+ International co-production agreement). Your dual approval is required before this invoice can proceed to payment.</p>
 <table style="width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px">
   <tr style="background:#f6f7f7"><td style="padding:6px 10px;font-weight:600;width:40%;border:1px solid #e4e6e7">Invoice Number</td><td style="padding:6px 10px;border:1px solid #e4e6e7;font-family:monospace">${invoice.invoiceNumber}</td></tr>
@@ -3471,13 +3658,12 @@ function GLModal({ invoice, appliedCode, onSend, onClose }: { invoice: Invoice; 
   <div style="font-size:11px;font-weight:700;color:#92600a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">Generated Production WBS Coding String</div>
   <div style="font-family:monospace;font-size:13px;font-weight:700;color:#b06b00;word-break:break-all">${prtCodingString}</div>
 </div>
-<p style="margin:0 0 10px"><strong>Action Required:</strong><br>Both <strong>Claudia Bauer (Production Finance Manager)</strong> and <strong>Marc Olivier-Leblanc (VP Finance, Content — RTL Group)</strong> must confirm the episode cost split and approve before the invoice is released for payment. Please reply with the confirmed per-episode allocation (€ amounts for EP7–8 and EP9–10) and your approval.</p>
+<p style="margin:0 0 10px"><strong>Action Required:</strong><br>Both <strong>Claudia Bauer (Production Finance Manager)</strong> and <strong>Marc Olivier-Leblanc (VP Finance, Content — RTL Group)</strong> must confirm the episode cost split and approve before the invoice is released for payment. Please complete this VIM work item with the confirmed per-episode allocation (€ amounts for EP7–8 and EP9–10).</p>
 <p style="margin:0 0 14px">→ <a href="${snUrl}" style="color:#1a3a6b;text-decoration:none;font-weight:600">Open Invoice in SAP VIM ↗</a> &nbsp;|&nbsp; <a href="mailto:ap-operations@bertelsmann.de" style="color:#1a3a6b;text-decoration:none;font-weight:600">Contact AP Operations</a></p>
 <p style="margin:0;color:#6b767b;font-size:12px">Regards,<br><strong style="color:#1d2f36">Bertelsmann Accounts Payable Operations</strong> — AP Automation<br>ap-automation@bertelsmann.de</p>`
 
   const stdBodyHtml = `
-<p style="margin:0 0 14px">Dear Caroline,</p>
-<p style="margin:0 0 14px">AP has received invoice <strong>${invoice.invoiceNumber}</strong> from <strong>${invoice.supplier}</strong> (${amt}) for campaign creative and production services delivered to the Territory marketing team in June 2026. As Cost Centre Owner for <strong>CC-BMS-MKT-2026</strong>, your confirmation is required on two points before we can release the invoice for payment.</p>
+<p style="margin:0 0 14px">As Cost Centre Owner for <strong>CC-BMS-MKT-2026</strong>, your confirmation is required on two points before AP can release the following invoice for payment. Invoice <strong>${invoice.invoiceNumber}</strong> from <strong>${invoice.supplier}</strong> (${amt}) covers campaign creative and production services delivered to the Territory marketing team in June 2026.</p>
 <table style="width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px">
   <tr style="background:#f6f7f7"><td style="padding:6px 10px;font-weight:600;width:40%;border:1px solid #e4e6e7">Invoice Number</td><td style="padding:6px 10px;border:1px solid #e4e6e7;font-family:monospace">${invoice.invoiceNumber}</td></tr>
   <tr><td style="padding:6px 10px;font-weight:600;border:1px solid #e4e6e7">Supplier</td><td style="padding:6px 10px;border:1px solid #e4e6e7">${invoice.supplier} (JVM-5591)</td></tr>
@@ -3495,12 +3681,11 @@ function GLModal({ invoice, appliedCode, onSend, onClose }: { invoice: Invoice; 
     <tr><td style="padding:3px 8px;font-family:monospace;color:#555">6630-005</td><td style="padding:3px 8px;color:#555">Brand &amp; Campaign Services</td><td style="padding:3px 8px;color:#555">28%</td></tr>
   </table>
 </div>
-<p style="margin:0 0 10px"><strong>Action Required:</strong><br>Could you please reply confirming: <strong>(1)</strong> the correct GL account to use, and <strong>(2)</strong> that all three deliverables below were received and accepted?</p>
+<p style="margin:0 0 10px"><strong>Action Required:</strong><br>Please complete this VIM work item confirming: <strong>(1)</strong> the correct GL account to use, and <strong>(2)</strong> that all three deliverables below were received and accepted.</p>
 <p style="margin:0 0 6px;font-size:12px;color:#555">Services to confirm:<br>— Creative Concept Development &amp; Strategy: €6,200.00<br>— Key Visual Design (3 formats, 2 revisions): €7,400.00<br>— Asset Production &amp; Format Adaptation: €4,800.00</p>
 <p style="margin:14px 0 0;color:#6b767b;font-size:12px">Regards,<br><strong style="color:#1d2f36">Lena Fischer — Accounts Payable, Bertelsmann GBS</strong><br>ap-operations@bertelsmann.de</p>`
 
   const rrdBodyHtml = `
-<p style="margin:0 0 14px">Dear Julia,</p>
 <p style="margin:0 0 14px">AP has received invoice <strong>${invoice.invoiceNumber}</strong> from RR Donnelley totalling <strong>$31,600.00 USD</strong>. The invoice includes a <strong>Paper Cost Surcharge of $2,400.00 (8.2% — PPPC Q2 2026)</strong> applied under Clause 8.2 of Framework Agreement PRH-RRD-PRINT-2024. We need to confirm whether this surcharge was pre-approved by Procurement before we can code and release the invoice for payment.</p>
 <table style="width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px">
   <tr style="background:#f6f7f7"><td style="padding:6px 10px;font-weight:600;width:40%;border:1px solid #e4e6e7">Invoice Number</td><td style="padding:6px 10px;border:1px solid #e4e6e7;font-family:monospace">${invoice.invoiceNumber}</td></tr>
@@ -3561,13 +3746,15 @@ function GLModal({ invoice, appliedCode, onSend, onClose }: { invoice: Invoice; 
 <p style="margin:14px 0 0;color:#6b767b;font-size:12px">Mit freundlichen Grüßen,<br><strong style="color:#1d2f36">Lena Fischer — Kreditorenbuchhaltung, Bertelsmann GBS</strong><br>ap-operations@bertelsmann.de</p>`
 
   return (
-    <CommunicationPreviewModal
-      to={isPRT ? 'c.bauer@fremantle.com' : isVendorDispute ? 'j.hartmann@penguinrandomhouse.com' : 'c.hoffmann@bertelsmannmediagroup.de'}
-      cc={isPRT ? 'm.olivier-leblanc@rtlgroup.de' : 'ap-operations@bertelsmann.de'}
+    <VIMWorkflowModal
+      workItemId={isPRT ? 'WI-2026-5390' : isVendorDispute ? 'WI-2026-2281' : 'WI-2026-7714'}
+      workItemType={isPRT ? 'WBS Coding — DOA Approval' : isVendorDispute ? 'Surcharge Pre-Approval Check' : 'GL Code Confirmation'}
+      priority={isPRT ? 'High' : 'Medium'}
+      assignedTo={isPRT ? 'Claudia Bauer — Production Finance Manager, Fremantle Germany' : isVendorDispute ? 'Julia Hartmann — Procurement Manager, Penguin Random House' : 'Caroline Hoffmann — Marketing Director, Bertelsmann Marketing Services'}
+      ccAssignee={isPRT ? 'Marc Olivier-Leblanc — VP Finance Content, RTL Group' : undefined}
       subject={subject}
       bodyHtml={isPRT ? prtBodyHtml : isVendorDispute ? rrdBodyHtml : stdBodyHtml}
-      htmlTranslations={isPRT ? { de: prtBodyHtmlDe } : isVendorDispute ? undefined : { de: stdBodyHtmlDe }}
-      subtitle={isPRT ? 'Auto-generated by WBS Coding Agent — DOA Approval Required' : isVendorDispute ? 'Internal query — Procurement pre-approval confirmation required' : 'Routed to Cost Centre Owner — GL code confirmation + service receipt'}
+      subtitle={isPRT ? 'WBS Coding Agent — DOA Approval Required' : isVendorDispute ? 'Internal query — PRH Procurement pre-approval' : 'GL Coding Agent — Cost Centre Owner Confirmation'}
       onSend={onSend}
       onClose={onClose}
     />
@@ -3649,24 +3836,24 @@ function StickyMetroGLPanel({ metroGLApprovalSent, onSendApproval, metroApproved
       <div style={{ flexShrink: 0, borderTop: '2px solid #b06b00', background: '#fff3d6', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2.5px solid #b06b00', borderTopColor: 'transparent', animation: 'spin 0.8s linear infinite', flexShrink: 0 }} />
         <div>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>GL Code Approval Sent — Awaiting Response from Markus Weber & Anja Krüger</div>
-          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Waiting for GL approval reply. Check Outlook for an incoming response.</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>VIM Work Item Routed — Awaiting GL Approval</div>
+          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>WI-2026-4561 sent to Markus Weber's SAP VIM worklist. Anja Krüger (AP Lead) also notified.</div>
         </div>
       </div>
     )
   }
 
-  // Default: not yet sent — show Send Approval + Reject buttons
+  // Default: not yet sent — show Route VIM + Reject buttons
   return (
     <div style={{ flexShrink: 0, borderTop: '2px solid #b91f1f', background: '#fff', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '16px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
       <div style={{ flexShrink: 0 }}>
         <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b91f1f' }}>GL Code — Internal Approval Required</div>
-        <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Send GL code approval request to the Cost Centre Owner and AP Lead to confirm the correct GL account.</div>
+        <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Route VIM work item to Cost Centre Owner and AP Lead to confirm the correct GL account via SAP VIM workflow.</div>
       </div>
       <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px', flexShrink: 0 }}>
-        <button onClick={onSendApproval} style={{ padding: '9px 20px', background: '#1a3a6b', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
-          <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" fill="none" stroke="white" strokeWidth="1.3"/><polyline points="0,0 7,7 14,0" fill="none" stroke="white" strokeWidth="1.3"/></svg>
-          Send Approval
+        <button onClick={onSendApproval} style={{ padding: '9px 20px', background: '#1c3f6e', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><rect x="8.5" y="8.5" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><path d="M3.25 5.5v3.5Q3.25 11 6 11h2.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" fill="none"/><polyline points="7.5,9.5 8.5,11 7.5,12.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+          Route VIM Approval
         </button>
         <button style={{ padding: '9px 18px', background: '#fff', color: '#b91f1f', border: '1.5px solid #b91f1f', borderRadius: '6px', fontSize: '14px', fontFamily: 'Lato, sans-serif', fontWeight: 700, cursor: 'pointer' }}>Reject</button>
       </div>
@@ -3704,8 +3891,8 @@ function StickyPRTPanel({ prtCodingConfirmed, onConfirm, onSendEmail, glApproval
       <div style={{ flexShrink: 0, borderTop: '2px solid #b06b00', background: '#fff3d6', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2.5px solid #b06b00', borderTopColor: 'transparent', animation: 'spin 0.8s linear infinite', flexShrink: 0 }} />
         <div>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>GL Approval Email Sent — Awaiting Response</div>
-          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>Waiting for GL approval reply. Check Outlook for an incoming response.</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#b06b00' }}>VIM Work Item Routed — Awaiting DOA Approval</div>
+          <div style={{ fontSize: '13px', color: '#7a4a00', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>WI-2026-5390 sent to Claudia Bauer's SAP VIM worklist. Marc Olivier-Leblanc (VP Finance Content) also notified.</div>
         </div>
       </div>
     )
@@ -3716,13 +3903,13 @@ function StickyPRTPanel({ prtCodingConfirmed, onConfirm, onSendEmail, glApproval
     return (
       <div style={{ flexShrink: 0, borderTop: '2px solid #1a3a6b', background: '#fff', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '16px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
         <div style={{ flexShrink: 0 }}>
-          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>GL Code Applied — Send for Approval</div>
-          <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>GL code has been applied. Send the approval mail to authorised approvers before this invoice can be processed.</div>
+          <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>GL Code Applied — Route VIM Approval Task</div>
+          <div style={{ fontSize: '13px', color: '#6b767b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>WBS coding string applied. Route VIM work item to Claudia Bauer & Marc Olivier-Leblanc for DOA approval before this invoice can be processed.</div>
         </div>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px', flexShrink: 0 }}>
-          <button onClick={onSendEmail} style={{ padding: '9px 20px', background: '#1a3a6b', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
-            <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><rect x="0" y="0" width="14" height="12" rx="2" fill="none" stroke="white" strokeWidth="1.3"/><polyline points="0,0 7,7 14,0" fill="none" stroke="white" strokeWidth="1.3"/></svg>
-            Send Mail for Approval
+          <button onClick={onSendEmail} style={{ padding: '9px 20px', background: '#1c3f6e', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '15px', fontFamily: 'Cabin, sans-serif', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '7px' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><rect x="8.5" y="8.5" width="4.5" height="4.5" rx="0.8" fill="white" opacity="0.9"/><path d="M3.25 5.5v3.5Q3.25 11 6 11h2.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" fill="none"/><polyline points="7.5,9.5 8.5,11 7.5,12.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
+            Route VIM Approval Task
           </button>
           <button style={{ padding: '9px 18px', background: '#fff', color: '#b91f1f', border: '1.5px solid #b91f1f', borderRadius: '6px', fontSize: '14px', fontFamily: 'Lato, sans-serif', fontWeight: 700, cursor: 'pointer' }}>Reject</button>
         </div>
@@ -4192,7 +4379,7 @@ export function ProcessingView({ invoice, onBack, onTaxMismatchSent, taxMismatch
       )}
       {isFailed && invoice.failType === 'duplicate' && <StickyDuplicatePanel notificationSent={duplicateNotificationSent} onDraftEmail={() => setShowDuplicateCommsModal(true)} />}
       {isFailed && invoice.failType === 'ic-mismatch' && !icEmailSent && !icMismatchAutoResolved && (
-        <StickyResolvePanel title="Intercompany Mismatch — ICE Reconciliation Required" subtitle="Generate ICE reconciliation email to Pieter Janssen (IC Accounting) to clear the €15,500 variance" buttonLabel="Trigger ICE Reconciliation" onResolve={() => setShowICCommsModal(true)} />
+        <StickyResolvePanel title="Intercompany Mismatch — ICE Reconciliation Required" subtitle="Route VIM work item to Pieter Janssen (IC Accounting, Bertelsmann Finance) to trigger ICE reconciliation and clear the €15,500 variance" buttonLabel="Route VIM Work Item" onResolve={() => setShowICCommsModal(true)} />
       )}
       {isFailed && invoice.failType === 'ic-mismatch' && icEmailSent && !icMismatchAutoResolved && (
         <div style={{ flexShrink: 0, borderTop: '2px solid #1a3a6b', background: '#f0f4fa', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
@@ -4200,16 +4387,16 @@ export function ProcessingView({ invoice, onBack, onTaxMismatchSent, taxMismatch
             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#fff" style={{ display: 'block' }}><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>ICE Reconciliation Triggered — Awaiting Confirmation from Pieter Janssen</div>
+            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>VIM Work Item Routed — Awaiting ICE Reconciliation</div>
             <div style={{ fontSize: '13px', color: '#3a4a6b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>
-              Notification sent to <strong>Pieter Janssen</strong> (p.janssen@bertelsmann.de) — awaiting confirmation that ICE-REC-2026-0619 is cleared and both entities are balanced
+              WI-2026-6647 sent to <strong>Pieter Janssen's</strong> SAP VIM worklist. Awaiting reconciliation of ICE-REC-2026-0619 and confirmation that both entities are balanced.
             </div>
           </div>
         </div>
       )}
       {isFailed && invoice.failType === 'ic-mismatch' && icMismatchAutoResolved && <AutoApprovePanel invoice={invoice} onViewPosting={() => setShowSAPPosting(true)} />}
       {isFailed && invoice.failType === 'royalty-mismatch' && !royaltySent && !royaltyMismatchAutoResolved && (
-        <StickyResolvePanel title="Royalty vs Contract Deviation — Review Required" subtitle="Route to Royalties Management to confirm the contract rate and resolve" buttonLabel="Send to Royalties Management" onResolve={() => setShowRoyaltyCommsModal(true)} />
+        <StickyResolvePanel title="Royalty vs Contract Deviation — Review Required" subtitle="Route VIM work item to Claire Newton (Royalties Manager, PRH) to confirm the contract rate" buttonLabel="Route VIM Work Item" onResolve={() => setShowRoyaltyCommsModal(true)} />
       )}
       {isFailed && invoice.failType === 'royalty-mismatch' && royaltySent && !royaltyMismatchAutoResolved && (
         <div style={{ flexShrink: 0, borderTop: '2px solid #1a3a6b', background: '#f0f4fa', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 -4px 16px rgba(0,0,0,0.08)' }}>
@@ -4217,9 +4404,9 @@ export function ProcessingView({ invoice, onBack, onTaxMismatchSent, taxMismatch
             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20" fill="#fff" style={{ display: 'block' }}><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>Notification Sent to Royalties Management</div>
+            <div style={{ fontFamily: 'Cabin, sans-serif', fontSize: '15px', fontWeight: 700, color: '#1a3a6b' }}>VIM Work Item Routed — Awaiting Rate Confirmation</div>
             <div style={{ fontSize: '13px', color: '#3a4a6b', fontFamily: 'Lato, sans-serif', marginTop: '2px' }}>
-              Deviation routed to <strong>Claire Newton</strong> (c.newton@penguinrandomhouse.com) — awaiting confirmation of the applicable contract rate
+              WI-2026-3312 sent to <strong>Claire Newton's</strong> SAP VIM worklist. Awaiting royalty rate confirmation from Penguin Random House Royalties Management.
             </div>
           </div>
         </div>

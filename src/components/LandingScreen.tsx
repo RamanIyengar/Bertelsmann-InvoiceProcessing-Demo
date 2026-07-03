@@ -54,10 +54,10 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     ],
     demo: [
       'The AI detects the missing SES as part of automated invoice validation — instantly, no manual investigation needed.',
-      'Auto-generates a professional, structured confirmation request directly to the responsible PO owner, with all invoice and PO details included.',
+      'Routes a SAP VIM Workflow task directly to the responsible PO owner\'s SAP inbox — pre-populated with all invoice and PO details, no manual drafting.',
       'Invoice is placed in a clear "pending SES confirmation" hold state — visible to all stakeholders.',
-      'The moment the PM confirms delivery, the invoice is automatically released for payment. No manual chasing. No email drafting. No delay.',
-      'The communication on screen is fully AI-generated — contextually accurate, routed to the right person, without any manual lookup.',
+      'The moment the PM completes the VIM work item confirming delivery, the invoice is automatically released for payment. No chasing. No delay.',
+      'Internal routing via SAP VIM Workflow — the right task, to the right person, through the system they already use every day.',
     ],
   },
   {
@@ -99,9 +99,9 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     demo: [
       'The AI analyses the invoice and presents two candidate GL accounts with confidence scores and clear business rationale for each.',
       'Transparently surfaces the ambiguity rather than forcing a single incorrect answer.',
-      'Auto-routes an approval request to the Cost Centre Owner — pre-populated with all invoice details, two GL options, single reply-to-confirm.',
-      'Posts automatically with a full audit trail once the business confirms the correct code.',
-      'Right decision, made by the right person, with the right information — at machine speed. No bottleneck, no rework.',
+      'Routes a SAP VIM Workflow task to the Cost Centre Owner\'s SAP inbox — pre-populated with invoice details, GL options, and a single action to confirm.',
+      'AP Lead is also notified via VIM Workflow for dual authorisation.',
+      'Posts automatically with a full audit trail once both approvals are complete. Right decision, right person, right system — no bottleneck, no rework.',
     ],
   },
   {
@@ -142,7 +142,7 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     demo: [
       'The AI reads the invoice description and applies GL coding logic informed by your chart of accounts and historical coding patterns for similar vendor and invoice types.',
       'Recommends the correct marketing GL account with a clear, auditable rationale.',
-      'Routes a pre-populated approval request to the identified budget owner — one email, one click to confirm.',
+      'Routes a SAP VIM Workflow task to the identified Cost Centre Owner\'s SAP inbox — one action in their worklist to confirm.',
       'Posts automatically on sign-off.',
       '3–7 days compressed to minutes. Consistent coding every time. Full audit trail.',
     ],
@@ -164,7 +164,7 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     demo: [
       'The AI extracts the project reference from the invoice header and line items.',
       'Maps costs to the correct WBS elements in SAP automatically — splitting the invoice across two project accounting codes based on the described work content.',
-      'Generates two linked AP tickets (AP-TKT-100254 and AP-TKT-100258), each routed for the appropriate project approval.',
+      'Generates two linked AP tickets (AP-TKT-100254 and AP-TKT-100258), each routed as a SAP VIM Workflow task to the appropriate internal approver.',
       'Complex, multi-dimension accounting logic executed without specialist intervention. Project cost reports stay current. No escalation. No delay.',
     ],
   },
@@ -206,7 +206,7 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     ],
     demo: [
       'The AI detects the posting mismatch between Fremantle UK\'s AR and RTL Germany\'s AP for the same transaction — in real time, before month-end consolidation.',
-      'Generates a structured reconciliation request to finance contacts at both entities simultaneously.',
+      'Routes SAP VIM Workflow tasks to intercompany finance contacts at both entities simultaneously — no email, directly into their SAP worklists.',
       'Places the relevant payment on hold with a clearly documented status visible to both sides.',
       'IC reconciliation shifts from a painful month-end scramble to a real-time automated control.',
       'Mismatches are caught when they occur — not three weeks later when they surface as a consolidation error.',
@@ -229,7 +229,7 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     demo: [
       'The AI compares the invoiced royalty rate against the contracted rate for the specific format, territory, and cumulative sales level applicable to this statement period.',
       'Identifies the deviation, quantifies the financial variance, and cites the relevant contract clause.',
-      'Routes the exception to your Royalty Manager with the full case detail in a single structured view — no manual investigation required.',
+      'Routes a SAP VIM Workflow task to your Royalty Manager with the full case detail — no manual investigation or email drafting required.',
       'Payment placed on hold automatically until resolution.',
       'Overpayment risk eliminated. Specialist review triggered only where it\'s actually needed. Full audit trail on every case.',
     ],
@@ -251,7 +251,7 @@ const USE_CASE_CARDS: { no: number; context: string[]; challenge: string[]; demo
     demo: [
       'The AI reads the invoice and extracts the milestone reference from the document.',
       'Uses GenAI-powered contract reading to locate the corresponding clause in the commission contract — understanding delivery conditions in natural language, not just keyword matching.',
-      'Determines that formal confirmation is required and auto-generates a structured verification request to your commissioning executive.',
+      'Determines that formal confirmation is required and routes a SAP VIM Workflow task directly to your commissioning executive\'s SAP inbox.',
       'Invoice held in a clearly documented pending state until confirmation arrives.',
       'Payment releases automatically on confirmation — no further human intervention at any step.',
       'This is AI at the intersection of document intelligence, contract management, and AP automation: a capability that goes beyond RPA or traditional workflow tools, and the direction your entire AP function is heading.',
